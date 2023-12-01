@@ -1,6 +1,8 @@
+Facebook Pixel
+==============
 
 DESCRIPTION
-===========
+-----------
 
 The Facebook Pixel module provides integration with the Facebook Pixel,
 allowing you to place a single pixel across your entire website to report
@@ -20,7 +22,7 @@ The module handles the following Facebook Pixel events:
 
 
 INSTALLATION
-============
+------------
 
 1. Enable the Facebook Pixel module.
 
@@ -34,7 +36,7 @@ INSTALLATION
 
 
 MORE INFORMATION
-================
+----------------
 
 * The Facebook Pixel documentation
   https://www.facebook.com/business/help/651294705016616/
@@ -44,3 +46,26 @@ MORE INFORMATION
 
 * How do I install the Facebook pixel and check that it's working?
   https://www.facebook.com/business/help/218844828315224
+
+  Maintainers
+-----------
+
+  - [Tim Erickson (stpaultim)](https://github.com/stpaultim)
+
+Credits
+-----------
+
+  - Support for this module provided by [Simplo.site](https://www.simplo.site)
+  - Initial port from Drupal by [Alomgir Hossain](https://github.com/bdalomgir)
+
+  - Drupal Maintainer: Andy Giles (https://www.drupal.org/u/andyg5000)
+  - Drupal Maintainer: Joshua Sedler (https://www.drupal.org/u/grevil)
+  - Drupal Maintainer: Julian Pustkuchen (https://www.drupal.org/u/anybody)
+  - Drupal Maintainer: Heshan Wanigasooriya (https://www.drupal.org/u/heshanlk)
+  - Drupal Maintainer: maciej.zgadzaj (https://www.drupal.org/u/maciejzgadzaj)
+
+
+License
+-------
+
+This project is GPL v2 software. See the LICENSE.txt file in this directory for complete text.
