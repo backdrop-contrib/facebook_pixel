@@ -19,7 +19,7 @@ The module handles the following Facebook Pixel events:
 
 (last 3 are based on the Drupal Commerce integration).
 
-
+Not all of these features apply to BackdropCMS. Please, test and let us know. 
 
 INSTALLATION
 ------------
@@ -47,7 +47,7 @@ MORE INFORMATION
 * How do I install the Facebook pixel and check that it's working?
   https://www.facebook.com/business/help/218844828315224
 
-  Maintainers
+Maintainers
 -----------
 
 - [Tim Erickson (stpaultim)](https://github.com/stpaultim)
