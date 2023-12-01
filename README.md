@@ -11,11 +11,11 @@ your website.
 
 The module handles the following Facebook Pixel events:
 
-  - ViewContent
-  - CompleteRegistration
-  - AddToCart
-  - InitiateCheckout
-  - Purchase
+- ViewContent
+- CompleteRegistration
+- AddToCart
+- InitiateCheckout
+- Purchase
 
 (last 3 are based on the Drupal Commerce integration).
 
@@ -50,19 +50,19 @@ MORE INFORMATION
   Maintainers
 -----------
 
-  - [Tim Erickson (stpaultim)](https://github.com/stpaultim)
+- [Tim Erickson (stpaultim)](https://github.com/stpaultim)
 
 Credits
 -----------
 
-  - Support for this module provided by [Simplo.site](https://www.simplo.site)
-  - Initial port from Drupal by [Alomgir Hossain](https://github.com/bdalomgir)
+- Support for this module provided by [Simplo.site](https://www.simplo.site)
+- Initial port from Drupal by [Alomgir Hossain](https://github.com/bdalomgir)
 
-  - Drupal Maintainer: Andy Giles (https://www.drupal.org/u/andyg5000)
-  - Drupal Maintainer: Joshua Sedler (https://www.drupal.org/u/grevil)
-  - Drupal Maintainer: Julian Pustkuchen (https://www.drupal.org/u/anybody)
-  - Drupal Maintainer: Heshan Wanigasooriya (https://www.drupal.org/u/heshanlk)
-  - Drupal Maintainer: maciej.zgadzaj (https://www.drupal.org/u/maciejzgadzaj)
+- Drupal Maintainer: Andy Giles (https://www.drupal.org/u/andyg5000)
+- Drupal Maintainer: Joshua Sedler (https://www.drupal.org/u/grevil)
+- Drupal Maintainer: Julian Pustkuchen (https://www.drupal.org/u/anybody)
+- Drupal Maintainer: Heshan Wanigasooriya (https://www.drupal.org/u/heshanlk)
+- Drupal Maintainer: maciej.zgadzaj (https://www.drupal.org/u/maciejzgadzaj)
 
 
 License
