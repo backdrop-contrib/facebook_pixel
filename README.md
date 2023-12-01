@@ -1,7 +1,7 @@
 Facebook Pixel
 ==============
 
-DESCRIPTION
+Description
 -----------
 
 The Facebook Pixel module provides integration with the Facebook Pixel,
@@ -19,9 +19,16 @@ The module handles the following Facebook Pixel events:
 
 (last 3 are based on the Drupal Commerce integration).
 
-Not all of these features apply to BackdropCMS. Please, test and let us know. 
+Special Note For Backdrop CMS
+-----------------------------
 
-INSTALLATION
+We ported this module but have not had cause to use or test it. 
+Please, let us know if you test it and we can issue a release.
+
+Not all features apply to Backdrop CMS, since there is no Drupal
+Commerce for Backdrop CMS at this time. 
+
+Installation
 ------------
 
 1. Enable the Facebook Pixel module.
@@ -35,7 +42,7 @@ INSTALLATION
 
 
 
-MORE INFORMATION
+More Information
 ----------------
 
 * The Facebook Pixel documentation
