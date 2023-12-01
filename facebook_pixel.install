@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the facebook_pixel module.
+ *
+ */
+
+
+/**
+ * Migrate facebook_pixel variables to config.
+ */
+function facebook_pixel_update_1000() {
+  $config = config('facebook_pixel.settings');
+  $config->set('facebook_pixel_id', update_variable_get('facebook_pixel_id', ''));
+  $config->set('facebook_pixel_exclude_admin_paths', update_variable_get('facebook_pixel_exclude_admin_paths', '1'));
+  $config->set('facebook_pixel_roles', update_variable_get('facebook_pixel_roles', array()));
+  $config->save();
+
+  update_variable_del('facebook_pixel_id');
+  update_variable_del('facebook_pixel_exclude_admin_paths');
+  update_variable_del('facebook_pixel_roles');
+}
+
+/**
+ * Implements hook_install().
+ */
+function facebook_pixel_install() {
+  // Dynamically generated variable data was detected.
+}

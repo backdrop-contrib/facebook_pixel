@@ -6,23 +6,25 @@
  */
 
 /**
- * Implements hook_admin_settings() for module settings configuration.
+ * Implements hook_admin_settings() for module settings configuration().
  */
 function facebook_pixel_admin_settings_form($form_state) {
+  $config = config('facebook_pixel.settings');
   $form = array();
+  $form['#config'] = 'facebook_pixel.settings';
 
   $form['facebook_pixel_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Pixel ID'),
     '#required' => TRUE,
-    '#default_value' => variable_get('facebook_pixel_id'),
+    '#default_value' => $config->get('facebook_pixel_id'),
   );
 
   $form['facebook_pixel_exclude_admin_paths'] = array(
     '#type' => 'checkbox',
     '#title' => t('Exclude from admin pages'),
     '#description' => t('The pixel tracking code will not be added to admin pages.'),
-    '#default_value' => variable_get('facebook_pixel_exclude_admin_paths', 1),
+    '#default_value' => $config->get('facebook_pixel_exclude_admin_paths'),
   );
 
   // Role specific visibility configurations.
@@ -34,7 +36,7 @@ function facebook_pixel_admin_settings_form($form_state) {
   $form['facebook_pixel_roles'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Remove Facebook Pixel for specific roles'),
-    '#default_value' => variable_get('facebook_pixel_roles', array()),
+    '#default_value' => $config->get('facebook_pixel_roles'),
     '#options' => $role_options,
     '#description' => t('Remove script only for the selected role(s). If none of the roles are selected, all roles will have the Facebook Pixel. Otherwise, any roles selected here will NOT have the script.'),
   );

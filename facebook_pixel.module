@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Drupal Module: Facebook Pixel.
+ * Backdrop Module: Facebook Pixel.
  */
 
 /**
@@ -26,7 +26,7 @@ function facebook_pixel_menu() {
   $items['admin/config/system/facebook_pixel'] = array(
     'title' => 'Facebook Pixel',
     'description' => 'Configure Facebook Pixel tracking behavior.',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('facebook_pixel_admin_settings_form'),
     'access arguments' => array('administer facebook pixel'),
     'type' => MENU_NORMAL_ITEM,
@@ -100,6 +100,17 @@ function facebook_pixel_commerce_checkout_complete($order) {
 }
 
 /**
+ * Implements hook_config_info().
+ */
+function facebook_pixel_config_info() {
+  $prefixes['facebook_pixel.settings'] = array(
+    'label' => t('Facebook Pixel settings'),
+    'group' => t('Configuration'),
+  );
+  return $prefixes;
+}
+
+/**
  * Adds Facebook Pixel event to the user session to be added to the page code.
  *
  * @param string $event
@@ -109,7 +120,7 @@ function facebook_pixel_commerce_checkout_complete($order) {
  */
 function facebook_pixel_add_event($event) {
   // Add variable to session only if module is configured.
-  if (variable_get('facebook_pixel_id')) {
+  if (config_get('facebook_pixel.settings', 'facebook_pixel_id')) {
     if (!isset($_SESSION['facebook_pixel'])) {
       $_SESSION['facebook_pixel'] = array();
     }
@@ -125,16 +136,17 @@ function facebook_pixel_add_event($event) {
  * @see facebook_pixel_add_event()
  */
 function facebook_pixel_preprocess_page(&$variables) {
+  $config = config('facebook_pixel.settings');
   global $user;
 
   if (
-    variable_get('facebook_pixel_exclude_admin_paths', 1) && path_is_admin(current_path())
-    || !facebook_pixel_user_visibility($user)
+    $config->get('facebook_pixel_exclude_admin_paths') && path_is_admin(current_path())
+     || !facebook_pixel_user_visibility($user)
   ) {
     return;
   }
 
-  if ($pixel_id = variable_get('facebook_pixel_id')) {
+  if ($pixel_id = $config->get('facebook_pixel_id')) {
     $script = "
 <!-- Facebook Pixel Code -->
 <script>
@@ -158,8 +170,8 @@ fbq('track', 'PageView');
         if (!empty($entity_id) && function_exists('facebook_pixel_data_' . $event)) {
           $data = call_user_func('facebook_pixel_data_' . $event, $entity_id);
           // Allow to alter data.
-          drupal_alter('facebook_pixel_data_' . $event, $data, $entity_id);
-          $script .= "fbq('track', '$event', " . drupal_json_encode($data) . ");\n";
+          backdrop_alter('facebook_pixel_data_' . $event, $data, $entity_id);
+          $script .= "fbq('track', '$event', " . backdrop_json_encode($data) . ");\n";
         }
         else {
           $script .= "fbq('track', '$event');\n";
@@ -178,7 +190,7 @@ fbq('track', 'PageView');
       '#markup' => $script,
       '#weight' => 1000,
     );
-    drupal_add_html_head($element, 'facebook_pixel');
+    backdrop_add_html_head($element, 'facebook_pixel');
   }
 }
 
@@ -234,7 +246,7 @@ function facebook_pixel_data_ViewContent($nid) {
  */
 function facebook_pixel_user_visibility($user) {
   $visible = TRUE;
-  $roles = variable_get('facebook_pixel_roles', array());
+  $roles = config_get('facebook_pixel.settings', 'facebook_pixel_roles');
   if (array_sum($roles) > 0) {
     // One or more roles are selected for tracking.
     foreach (array_keys($user->roles) as $rid) {
